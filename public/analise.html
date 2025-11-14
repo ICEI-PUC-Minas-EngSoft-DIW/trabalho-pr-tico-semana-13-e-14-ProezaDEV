@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Conteúdo - Desliga AI</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- CSS do projeto -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .analise-container {
+            padding: 100px 0 60px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .analise-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .analise-header h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .analise-description {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+        
+        .chart-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        #chartAnalise {
+            max-height: 500px;
+        }
+        
+        .btn-back {
+            background: var(--gradient);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-back:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+        
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #c33;
+            margin: 20px 0;
+        }
+        
+        .btn-reload {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .btn-reload:hover {
+            background: #d11479;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Desliga AI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html#sobre">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#cards">Artigos</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="analise.html">Análise</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contato">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Análise Section -->
+    <section class="analise-container">
+        <div class="container">
+            <div class="analise-header">
+                <h1>Análise de Conteúdo: Profundidade vs Ação Prática</h1>
+                <div class="analise-description">
+                    <p>Descubra o equilíbrio entre conhecimento profundo e orientações práticas em nossos artigos. Esta análise visual mostra quantas palavras dedicamos a explicar cada tema e quantas dicas práticas oferecemos para você aplicar imediatamente na sua jornada de equilíbrio digital. Quanto mais você entende sobre o problema, mais ferramentas você precisa para superá-lo.</p>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div id="chartAnaliseContainer">
+                    <canvas id="chartAnalise"></canvas>
+                </div>
+                <div class="text-center">
+                    <button class="btn-reload" onclick="rebuildChart()">
+                        <i class="fas fa-sync-alt"></i> Recarregar Dados
+                    </button>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="index.html" class="btn-back">
+                    <i class="fas fa-arrow-left"></i> Voltar para Home
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p>&copy; 2023 Desliga AI. Todos os direitos reservados.⚡(ProezaDEV)⚡</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="index.html#sobre" class="text-white text-decoration-none me-3">Sobre</a>
+                    <a href="index.html#cards" class="text-white text-decoration-none me-3">Artigos</a>
+                    <a href="analise.html" class="text-white text-decoration-none me-3">Análise</a>
+                    <a href="index.html#contato" class="text-white text-decoration-none">Contato</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- IMPORTANTE: app.js deve ser carregado ANTES de analise.js para garantir que itemsData esteja disponível -->
+    <script src="app.js"></script>
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <!-- Script de análise (deve ser carregado por último) -->
+    <script src="analise.js"></script>
+</body>
+</html>
+
